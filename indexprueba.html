@@ -16,6 +16,7 @@
             --gris-claro: #e0e0e0;
             --blanco: #ffffff;
             --azul-tecnico: #0066ff;
+            --degradado-principal: linear-gradient(135deg, var(--verde), var(--azul-tecnico));
         }
         
         /* Estilos generales */
@@ -59,7 +60,7 @@
         .section-title h2 {
             font-size: 2.5rem;
             margin-bottom: 15px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            background: var(--degradado-principal);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -77,7 +78,7 @@
             position: absolute;
             width: 100px;
             height: 3px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            background: var(--degradado-principal);
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
@@ -85,7 +86,7 @@
         
         .btn {
             display: inline-block;
-            background: linear-gradient(to right, var(--verde), var(--verde-oscuro));
+            background: var(--degradado-principal);
             color: var(--negro);
             padding: 12px 30px;
             border-radius: 5px;
@@ -114,7 +115,7 @@
         
         /* Header */
         header {
-            background-color: rgba(10, 10, 10, 0.9);
+            background-color: rgba(10, 10, 10, 0.95);
             padding: 15px 0;
             position: fixed;
             top: 0;
@@ -122,6 +123,12 @@
             z-index: 1000;
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
         
         .header-container {
@@ -144,7 +151,7 @@
         
         .logo h1 {
             font-size: 1.8rem;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            background: var(--degradado-principal);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -190,11 +197,12 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('andesportada.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('andesporta.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             color: white;
-            padding: 150px 0 100px;
+            padding: 180px 0 120px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -207,26 +215,49 @@
             left: 0;
             width: 100%;
             height: 100%;
-    
+            background: linear-gradient(45deg, rgba(0, 255, 136, 0.2), rgba(0, 102, 255, 0.2));
             z-index: 1;
         }
         
         .hero-content {
             position: relative;
             z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .hero h2 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            animation: fadeInUp 1s ease;
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 700px;
             margin: 0 auto 30px;
             color: var(--gris-claro);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero-btns {
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .hero-btns .btn {
+            margin: 0 10px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         /* Servicios */
@@ -258,7 +289,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            background: var(--degradado-principal);
         }
         
         .servicio-card:hover {
@@ -269,7 +300,7 @@
         .servicio-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            background: var(--degradado-principal);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -317,7 +348,7 @@
         }
         
         .categoria-btn.active, .categoria-btn:hover {
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            background: var(--degradado-principal);
             color: var(--negro);
         }
         
@@ -344,7 +375,7 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            background: var(--degradado-principal);
             color: var(--negro);
             padding: 5px 10px;
             border-radius: 3px;
@@ -413,6 +444,28 @@
             font-size: 1.2rem;
         }
         
+        /* Categorías específicas */
+        .categoria-section {
+            margin-bottom: 80px;
+        }
+        
+        .categoria-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .categoria-header h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--blanco);
+        }
+        
+        .categoria-header p {
+            color: var(--gris-claro);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
         /* Sobre Nosotros */
         .sobre-nosotros {
             padding: 100px 0;
@@ -453,7 +506,7 @@
         .stat-number {
             font-size: 2.5rem;
             font-weight: bold;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            background: var(--degradado-principal);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -504,7 +557,7 @@
         .info-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            background: var(--degradado-principal);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -606,7 +659,7 @@
             position: absolute;
             width: 40px;
             height: 2px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            background: var(--degradado-principal);
             bottom: 0;
             left: 0;
         }
@@ -661,7 +714,7 @@
         }
         
         .social-icons a:hover {
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            background: var(--degradado-principal);
             color: var(--negro);
             transform: translateY(-3px);
         }
@@ -691,7 +744,11 @@
             }
             
             .hero h2 {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
             }
             
             .sobre-content {
@@ -702,12 +759,19 @@
                 flex-direction: column;
                 gap: 20px;
             }
+            
+            .hero-btns .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                max-width: 250px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="main-header">
         <div class="container header-container">
             <a href="index.html" class="logo">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ43RuU0ns3DYgTFBX7ZDtsvC2JJd5ntXCC1Bp9f-dpA0KGRW2x2D1KNPLfqvT_RuU8FIA" alt="Logo Andescomputacion">
@@ -730,9 +794,12 @@
         <div class="container hero-content">
             <h2>Especialistas en Tecnología</h2>
             <p>Venta de componentes, servicio técnico profesional e instalación de sistemas de seguridad. Tu solución tecnológica integral.</p>
-            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesan%20sus%20servicios%20de%20Andescomputacion" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
-            </a>
+            <div class="hero-btns">
+                <a href="#productos" class="btn">Ver Productos</a>
+                <a href="https://wa.me/56961938981?text=Hola,%20me%20interesan%20sus%20servicios%20de%20Andescomputacion" class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                </a>
+            </div>
         </div>
     </section>
 
@@ -813,200 +880,154 @@
                 <button class="categoria-btn" data-categoria="almacenamiento">Almacenamiento</button>
             </div>
             
-            <div class="productos-grid">
-                <!-- Fuente de Poder 1 -->
-                <div class="producto-card" data-categoria="fuentes">
-                    <div class="producto-badge">Nuevo</div>
-                    <div class="producto-img">
-                        <img src="https://images.unsplash.com/photo-1608396372738-61d8cd2c8a6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fuente de Poder Corsair">
-                    </div>
-                    <div class="producto-info">
-                        <h3>Fuente Corsair RM850x</h3>
-                        <p class="producto-desc">Fuente modular 80 Plus Gold de 850W para gaming</p>
-                        <div class="producto-especificaciones">
-                            <div class="especificacion">
-                                <span>Potencia:</span>
-                                <span>850W</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Certificación:</span>
-                                <span>80 Plus Gold</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Modular:</span>
-                                <span>Sí</span>
-                            </div>
-                        </div>
-                        <div class="producto-precio">
-                            <span class="precio">$149.990</span>
-                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20la%20Fuente%20Corsair%20RM850x%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Consultar
-                            </a>
-                        </div>
-                    </div>
+            <!-- Categoría: Fuentes de Poder -->
+            <div class="categoria-section" id="categoria-fuentes">
+                <div class="categoria-header">
+                    <h3>Fuentes de Poder</h3>
+                    <p>Encuentra la fuente perfecta para tu sistema, con certificaciones de eficiencia energética</p>
                 </div>
-                
-                <!-- Gabinete 1 -->
-                <div class="producto-card" data-categoria="gabinetes">
-                    <div class="producto-badge">Popular</div>
-                    <div class="producto-img">
-                        <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Gabinete NZXT">
-                    </div>
-                    <div class="producto-info">
-                        <h3>Gabinete NZXT H510</h3>
-                        <p class="producto-desc">Gabinete mid-tower con panel lateral templado</p>
-                        <div class="producto-especificaciones">
-                            <div class="especificacion">
-                                <span>Factor:</span>
-                                <span>ATX Mid-Tower</span>
+                <div class="productos-grid">
+                    <div class="producto-card" data-categoria="fuentes">
+                        <div class="producto-badge">Nuevo</div>
+                        <div class="producto-img">
+                            <img src="https://images.unsplash.com/photo-1608396372738-61d8cd2c8a6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fuente de Poder Corsair">
+                        </div>
+                        <div class="producto-info">
+                            <h3>Fuente Corsair RM850x</h3>
+                            <p class="producto-desc">Fuente modular 80 Plus Gold de 850W para gaming</p>
+                            <div class="producto-especificaciones">
+                                <div class="especificacion">
+                                    <span>Potencia:</span>
+                                    <span>850W</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>Certificación:</span>
+                                    <span>80 Plus Gold</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>Modular:</span>
+                                    <span>Sí</span>
+                                </div>
                             </div>
-                            <div class="especificacion">
-                                <span>Ventanas:</span>
-                                <span>Panel Templado</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>RGB:</span>
-                                <span>Incluido</span>
+                            <div class="producto-precio">
+                                <span class="precio">$149.990</span>
+                                <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20la%20Fuente%20Corsair%20RM850x%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
                             </div>
                         </div>
-                        <div class="producto-precio">
-                            <span class="precio">$89.990</span>
-                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Gabinete%20NZXT%20H510%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Consultar
-                            </a>
-                        </div>
                     </div>
-                </div>
-                
-                <!-- Memoria RAM 1 -->
-                <div class="producto-card" data-categoria="ram">
-                    <div class="producto-badge">Oferta</div>
-                    <div class="producto-img">
-                        <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Memoria RAM Corsair">
-                    </div>
-                    <div class="producto-info">
-                        <h3>RAM Corsair Vengeance 16GB</h3>
-                        <p class="producto-desc">Kit 2x8GB DDR4 3200MHz para gaming</p>
-                        <div class="producto-especificaciones">
-                            <div class="especificacion">
-                                <span>Capacidad:</span>
-                                <span>16GB (2x8GB)</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Velocidad:</span>
-                                <span>3200MHz</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Latencia:</span>
-                                <span>CL16</span>
-                            </div>
+                    
+                    <div class="producto-card" data-categoria="fuentes">
+                        <div class="producto-img">
+                            <img src="https://images.unsplash.com/photo-1608396372738-61d8cd2c8a6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fuente de Poder Seasonic">
                         </div>
-                        <div class="producto-precio">
-                            <span class="precio">$64.990</span>
-                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20la%20RAM%20Corsair%20Vengeance%2016GB%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Consultar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Procesador 1 -->
-                <div class="producto-card" data-categoria="procesadores">
-                    <div class="producto-img">
-                        <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Procesador AMD Ryzen">
-                    </div>
-                    <div class="producto-info">
-                        <h3>AMD Ryzen 7 5800X</h3>
-                        <p class="producto-desc">Procesador 8 núcleos 16 hilos para gaming</p>
-                        <div class="producto-especificaciones">
-                            <div class="especificacion">
-                                <span>Núcleos:</span>
-                                <span>8 / 16 hilos</span>
+                        <div class="producto-info">
+                            <h3>Fuente Seasonic Focus 750W</h3>
+                            <p class="producto-desc">Fuente 80 Plus Gold totalmente modular</p>
+                            <div class="producto-especificaciones">
+                                <div class="especificacion">
+                                    <span>Potencia:</span>
+                                    <span>750W</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>Certificación:</span>
+                                    <span>80 Plus Gold</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>Modular:</span>
+                                    <span>Completo</span>
+                                </div>
                             </div>
-                            <div class="especificacion">
-                                <span>Frecuencia:</span>
-                                <span>Hasta 4.7GHz</span>
+                            <div class="producto-precio">
+                                <span class="precio">$129.990</span>
+                                <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20la%20Fuente%20Seasonic%20Focus%20750W%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
                             </div>
-                            <div class="especificacion">
-                                <span>Socket:</span>
-                                <span>AM4</span>
-                            </div>
-                        </div>
-                        <div class="producto-precio">
-                            <span class="precio">$349.990</span>
-                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Procesador%20AMD%20Ryzen%207%205800X%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Consultar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Almacenamiento 1 -->
-                <div class="producto-card" data-categoria="almacenamiento">
-                    <div class="producto-badge">Nuevo</div>
-                    <div class="producto-img">
-                        <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="SSD Samsung">
-                    </div>
-                    <div class="producto-info">
-                        <h3>SSD Samsung 970 EVO Plus 1TB</h3>
-                        <p class="producto-desc">SSD NVMe M.2 de alta velocidad</p>
-                        <div class="producto-especificaciones">
-                            <div class="especificacion">
-                                <span>Capacidad:</span>
-                                <span>1TB</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Velocidad Lectura:</span>
-                                <span>3,500 MB/s</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Interfaz:</span>
-                                <span>NVMe M.2</span>
-                            </div>
-                        </div>
-                        <div class="producto-precio">
-                            <span class="precio">$119.990</span>
-                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20SSD%20Samsung%20970%20EVO%20Plus%201TB%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Consultar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Fuente de Poder 2 -->
-                <div class="producto-card" data-categoria="fuentes">
-                    <div class="producto-img">
-                        <img src="https://images.unsplash.com/photo-1608396372738-61d8cd2c8a6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fuente de Poder Seasonic">
-                    </div>
-                    <div class="producto-info">
-                        <h3>Fuente Seasonic Focus 750W</h3>
-                        <p class="producto-desc">Fuente 80 Plus Gold totalmente modular</p>
-                        <div class="producto-especificaciones">
-                            <div class="especificacion">
-                                <span>Potencia:</span>
-                                <span>750W</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Certificación:</span>
-                                <span>80 Plus Gold</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Modular:</span>
-                                <span>Completo</span>
-                            </div>
-                        </div>
-                        <div class="producto-precio">
-                            <span class="precio">$129.990</span>
-                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20la%20Fuente%20Seasonic%20Focus%20750W%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Consultar
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="productos.html" class="btn">Ver Todos los Productos</a>
+            <!-- Categoría: Gabinetes -->
+            <div class="categoria-section" id="categoria-gabinetes">
+                <div class="categoria-header">
+                    <h3>Gabinetes</h3>
+                    <p>Encuentra el gabinete perfecto para tu setup, con diseños modernos y funcionales</p>
+                </div>
+                <div class="productos-grid">
+                    <div class="producto-card" data-categoria="gabinetes">
+                        <div class="producto-badge">Popular</div>
+                        <div class="producto-img">
+                            <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Gabinete NZXT">
+                        </div>
+                        <div class="producto-info">
+                            <h3>Gabinete NZXT H510</h3>
+                            <p class="producto-desc">Gabinete mid-tower con panel lateral templado</p>
+                            <div class="producto-especificaciones">
+                                <div class="especificacion">
+                                    <span>Factor:</span>
+                                    <span>ATX Mid-Tower</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>Ventanas:</span>
+                                    <span>Panel Templado</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>RGB:</span>
+                                    <span>Incluido</span>
+                                </div>
+                            </div>
+                            <div class="producto-precio">
+                                <span class="precio">$89.990</span>
+                                <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Gabinete%20NZXT%20H510%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Categoría: Memoria RAM -->
+            <div class="categoria-section" id="categoria-ram">
+                <div class="categoria-header">
+                    <h3>Memoria RAM</h3>
+                    <p>Mejora el rendimiento de tu equipo con nuestra selección de memorias de alta velocidad</p>
+                </div>
+                <div class="productos-grid">
+                    <div class="producto-card" data-categoria="ram">
+                        <div class="producto-badge">Oferta</div>
+                        <div class="producto-img">
+                            <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Memoria RAM Corsair">
+                        </div>
+                        <div class="producto-info">
+                            <h3>RAM Corsair Vengeance 16GB</h3>
+                            <p class="producto-desc">Kit 2x8GB DDR4 3200MHz para gaming</p>
+                            <div class="producto-especificaciones">
+                                <div class="especificacion">
+                                    <span>Capacidad:</span>
+                                    <span>16GB (2x8GB)</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>Velocidad:</span>
+                                    <span>3200MHz</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>Latencia:</span>
+                                    <span>CL16</span>
+                                </div>
+                            </div>
+                            <div class="producto-precio">
+                                <span class="precio">$64.990</span>
+                                <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20la%20RAM%20Corsair%20Vengeance%2016GB%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1014,35 +1035,32 @@
     <!-- Sobre Nosotros -->
     <section class="sobre-nosotros" id="nosotros">
         <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nosotros</h2>
+                <p>Conoce más sobre Andescomputacion y nuestra trayectoria</p>
+            </div>
             <div class="sobre-content">
                 <div class="sobre-text">
-                    <h2>Sobre Andescomputacion</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nisi tempora ducimus laborum excepturi minima est maiores velit porro eveniet tempore saepe, et nemo, tenetur nesciunt, vero suscipit sit iste?.</p>
-<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore fugit eveniet, laboriosam dignissimos earum reiciendis recusandae maxime quas tempore fuga nihil! Ipsam, doloremque. Excepturi delectus voluptatem hic molestias? Saepe, porro?
-
-</p>                    <p></p>
-                    
+                    <h2>Especialistas en Tecnología desde 2010</h2>
+                    <p>En Andescomputacion nos dedicamos a ofrecer soluciones tecnológicas integrales para particulares y empresas. Nuestra experiencia de más de 10 años en el mercado nos ha permitido consolidarnos como referentes en el sector.</p>
+                    <p>Nos especializamos en la venta de componentes de computación, servicio técnico profesional, reparación de notebooks e instalación de sistemas de seguridad. Trabajamos con productos de primera calidad y ofrecemos garantía en todos nuestros servicios.</p>
                     <div class="sobre-stats">
                         <div class="stat">
-                            <div class="stat-number">10+</div>
+                            <div class="stat-number">+10</div>
                             <div class="stat-text">Años de Experiencia</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number">5,000+</div>
+                            <div class="stat-number">+5.000</div>
                             <div class="stat-text">Clientes Satisfechos</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number">98%</div>
-                            <div class="stat-text">Tasa de Satisfacción</div>
+                            <div class="stat-number">+10.000</div>
+                            <div class="stat-text">Productos Vendidos</div>
                         </div>
-                    </div>
-                    
-                    <div style="margin-top: 30px;">
-                        <a href="nosotros.html" class="btn">Conoce Más Sobre Nosotros</a>
                     </div>
                 </div>
                 <div class="sobre-image">
-                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Equipo de Andescomputacion">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Equipo de Andescomputacion">
                 </div>
             </div>
         </div>
@@ -1052,79 +1070,68 @@
     <section class="contacto" id="contacto">
         <div class="container">
             <div class="section-title">
-                <h2>Contáctanos</h2>
-                <p>Estamos aquí para resolver todas tus necesidades tecnológicas</p>
+                <h2>Contacto</h2>
+                <p>¿Necesitas asesoría? Contáctanos y te ayudaremos con tu proyecto</p>
             </div>
             <div class="contacto-grid">
                 <div class="contacto-info">
                     <div class="info-item">
                         <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="info-text">
-                            <h3>Dirección</h3>
-                            <p>Av. Tecnológica 123, Centro</p>
+                            <h3>Ubicación</h3>
+                            <p>Av. Principal 123, Santiago, Chile</p>
                         </div>
                     </div>
                     <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-phone"></i></div>
+                        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
                         <div class="info-text">
                             <h3>Teléfono</h3>
-                            <p>+56 9 1234 5678</p>
+                            <p>+56 9 6193 8981</p>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-icon"><i class="fas fa-envelope"></i></div>
                         <div class="info-text">
                             <h3>Email</h3>
-                            <p>info@andescomputacion.cl</p>
+                            <p>contacto@andescomputacion.cl</p>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-icon"><i class="fas fa-clock"></i></div>
                         <div class="info-text">
                             <h3>Horario de Atención</h3>
-                            <p>Lunes a Viernes: 9:00 - 19:00 hrs<br>Sábados: 10:00 - 14:00 hrs</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
-                        <div class="info-text">
-                            <h3>WhatsApp</h3>
-                            <p>
-                                <a href="https://wa.me/56961938981?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20sus%20servicios" class="btn btn-whatsapp" target="_blank" style="padding: 8px 15px; font-size: 0.9rem;">
-                                    <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
-                                </a>
-                            </p>
+                            <p>Lunes a Viernes: 9:00 - 19:00<br>Sábados: 10:00 - 14:00</p>
                         </div>
                     </div>
                 </div>
                 <div class="contacto-form">
-                    <form>
+                    <form id="form-contacto">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" id="nombre" required>
+                            <input type="text" id="nombre" name="nombre" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" required>
+                            <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="telefono">Teléfono</label>
-                            <input type="tel" id="telefono">
+                            <input type="tel" id="telefono" name="telefono">
                         </div>
                         <div class="form-group">
                             <label for="servicio">Servicio de Interés</label>
-                            <select id="servicio">
+                            <select id="servicio" name="servicio">
                                 <option value="">Selecciona un servicio</option>
                                 <option value="venta-componentes">Venta de Componentes</option>
                                 <option value="servicio-tecnico">Servicio Técnico</option>
                                 <option value="reparacion-notebooks">Reparación de Notebooks</option>
-                                <option value="servicio-impresoras">Servicio de Impresoras</option>
                                 <option value="instalacion-camaras">Instalación de Cámaras</option>
+                                <option value="redes">Redes y Conectividad</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="mensaje">Mensaje</label>
-                            <textarea id="mensaje" placeholder="Describe tu consulta o requerimiento..." required></textarea>
+                            <textarea id="mensaje" name="mensaje" required></textarea>
                         </div>
                         <button type="submit" class="btn">Enviar Mensaje</button>
                     </form>
@@ -1140,43 +1147,63 @@
                 <div class="footer-logo">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ43RuU0ns3DYgTFBX7ZDtsvC2JJd5ntXCC1Bp9f-dpA0KGRW2x2D1KNPLfqvT_RuU8FIA" alt="Logo Andescomputacion">
                     <h3>Andescomputacion</h3>
-                    <p>Tu solución tecnológica de confianza desde 0000.</p>
+                    <p>Tu solución tecnológica integral. Especialistas en componentes, servicio técnico e instalación de sistemas de seguridad.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="https://wa.me/56912345678" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/56961938981" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h4>Enlaces Rápidos</h4>
                     <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="servicios.html">Servicios</a></li>
-                        <li><a href="productos.html">Productos</a></li>
-                        <li><a href="nosotros.html">Nosotros</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="servicios.html#venta-componentes">Venta de Componentes</a></li>
+                        <li><a href="servicios.html#servicio-tecnico">Servicio Técnico</a></li>
+                        <li><a href="servicios.html#reparacion-notebooks">Reparación de Notebooks</a></li>
+                        <li><a href="servicios.html#instalacion-camaras">Instalación de Cámaras</a></li>
+                        <li><a href="servicios.html#redes-conectividad">Redes y Conectividad</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h4>Contacto</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Yerbas Buenas 381, 2100000 Los Andes, Valparaíso</p>
-                    <p><i class="fas fa-phone"></i> +56 9 6193 8981</p>
-                    <p><i class="fas fa-envelope"></i> info@andescomputacion.cl</p>
-                    <p><i class="fas fa-clock"></i> Lun-Vie: 00:00-00:00 / Sáb:00:00-00:00</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Principal 123, Santiago, Chile</p>
+                    <p><i class="fas fa-phone-alt"></i> +56 9 6193 8981</p>
+                    <p><i class="fas fa-envelope"></i> contacto@andescomputacion.cl</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Viernes: 9:00 - 19:00</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Andescomputacion. Todos los derechos reservados.</p>
+                <p>&copy; 2023 Andescomputacion. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Filtro de productos por categoría
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Filtro de categorías
         document.addEventListener('DOMContentLoaded', function() {
             const categoriaBtns = document.querySelectorAll('.categoria-btn');
-            const productoCards = document.querySelectorAll('.producto-card');
+            const productos = document.querySelectorAll('.producto-card');
             
             categoriaBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -1188,15 +1215,35 @@
                     const categoria = this.getAttribute('data-categoria');
                     
                     // Mostrar/ocultar productos según categoría
-                    productoCards.forEach(card => {
-                        if (categoria === 'todos' || card.getAttribute('data-categoria') === categoria) {
-                            card.style.display = 'block';
+                    productos.forEach(producto => {
+                        if (categoria === 'todos' || producto.getAttribute('data-categoria') === categoria) {
+                            producto.style.display = 'block';
                         } else {
-                            card.style.display = 'none';
+                            producto.style.display = 'none';
+                        }
+                    });
+                    
+                    // Mostrar/ocultar secciones de categorías
+                    const categoriaSections = document.querySelectorAll('.categoria-section');
+                    categoriaSections.forEach(section => {
+                        if (categoria === 'todos' || section.id === `categoria-${categoria}`) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
                         }
                     });
                 });
             });
+            
+            // Form submission
+            const form = document.getElementById('form-contacto');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+                    form.reset();
+                });
+            }
         });
     </script>
 </body>

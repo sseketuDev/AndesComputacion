@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos - Andescomputacion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de colores y estilos */
+        :root {
+            --verde: #00ff88;
+            --verde-oscuro: #00cc6a;
+            --negro: #0a0a0a;
+            --gris-oscuro: #1a1a1a;
+            --gris: #333333;
+            --gris-claro: #e0e0e0;
+            --blanco: #ffffff;
+            --azul-tecnico: #0066ff;
+        }
+        
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--negro);
+            color: var(--blanco);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Efectos globales */
+        .tech-border {
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        .section-title p {
+            color: var(--gris-claro);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--verde), var(--verde-oscuro));
+            color: var(--negro);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+        }
+        
+        .btn-whatsapp:hover {
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+            filter: drop-shadow(0 0 5px var(--verde));
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--verde);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--verde);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Catálogo de Productos */
+        .catalogo {
+            padding: 120px 0 80px;
+            background-color: var(--negro);
+        }
+        
+        .categorias {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .categoria-btn {
+            background-color: var(--gris-oscuro);
+            color: var(--blanco);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .categoria-btn.active, .categoria-btn:hover {
+            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            color: var(--negro);
+        }
+        
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .producto-card {
+            background-color: var(--gris-oscuro);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .producto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+        }
+        
+        .producto-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            color: var(--negro);
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .producto-img {
+            height: 200px;
+            background-color: var(--negro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+        
+        .producto-img img {
+            max-width: 100%;
+            max-height: 160px;
+            transition: transform 0.3s;
+        }
+        
+        .producto-card:hover .producto-img img {
+            transform: scale(1.05);
+        }
+        
+        .producto-info {
+            padding: 20px;
+        }
+        
+        .producto-info h3 {
+            margin-bottom: 10px;
+            color: var(--blanco);
+        }
+        
+        .producto-desc {
+            color: var(--gris-claro);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .producto-especificaciones {
+            margin-bottom: 15px;
+        }
+        
+        .especificacion {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+            color: var(--gris-claro);
+        }
+        
+        .producto-precio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .precio {
+            font-weight: bold;
+            color: var(--verde);
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--gris-oscuro);
+            color: white;
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 5px var(--verde));
+        }
+        
+        .footer-logo h3 {
+            color: var(--verde);
+            margin-bottom: 15px;
+        }
+        
+        .footer-links h4,
+        .footer-contact h4 {
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--verde);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: #bbb;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--verde);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--negro);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
+            color: var(--negro);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .categorias {
+                gap: 10px;
+            }
+            
+            .categoria-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ43RuU0ns3DYgTFBX7ZDtsvC2JJd5ntXCC1Bp9f-dpA0KGRW2x2D1KNPLfqvT_RuU8FIA" alt="Logo Andescomputacion">
+                <h1>Andescomputacion</h1>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Catálogo de Productos -->
+    <section class="catalogo" id="catalogo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Catálogo de Productos</h2>
+                <p>Los componentes y periféricos más populares del mercado</p>
+            </div>
+            
+            <div class="categorias">
+                <button class="categoria-btn active" data-categoria="todos">Todos</button>
+                <button class="categoria-btn" data-categoria="tarjetas-graficas">Tarjetas Gráficas</button>
+                <button class="categoria-btn" data-categoria="placas-madre">Placas Madre</button>
+                <button class="categoria-btn" data-categoria="almacenamiento">Almacenamiento</button>
+                <button class="categoria-btn" data-categoria="refrigeracion">Refrigeración</button>
+                <button class="categoria-btn" data-categoria="monitores">Monitores</button>
+                <button class="categoria-btn" data-categoria="perifericos">Periféricos</button>
+                <button class="categoria-btn" data-categoria="audio">Audio</button>
+                <button class="categoria-btn" data-categoria="redes">Redes</button>
+            </div>
+            
+            <div class="productos-grid">
+                <!-- Tarjeta Gráfica 1 -->
+                <div class="producto-card" data-categoria="tarjetas-graficas">
+                    <div class="producto-badge">Nuevo</div>
+                    <div class="producto-img">
+                        <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="NVIDIA GeForce RTX 4070">
+                    </div>
+                    <div class="producto-info">
+                        <h3>NVIDIA GeForce RTX 4070</h3>
+                        <p class="producto-desc">Tarjeta gráfica de alto rendimiento para gaming 4K</p>
+                        <div class="producto-especificaciones">
+                            <div class="especificacion">
+                                <span>Memoria:</span>
+                                <span>12GB GDDR6X</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Interfaz:</span>
+                                <span>PCIe 4.0</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Conectores:</span>
+                                <span>3x DisplayPort, 1x HDMI</span>
+                            </div>
+                        </div>
+                        <div class="producto-precio">
+                            <span class="precio">$699.990</span>
+                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20la%20NVIDIA%20GeForce%20RTX%204070%20que%20vi%20en%20su%20catálogo" class="btn btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Placa Madre 1 -->
+                <div class="producto-card" data-categoria="placas-madre">
+                    <div class="producto-badge">Popular</div>
+                    <div class="producto-img">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="ASUS ROG Strix B550-F Gaming">
+                    </div>
+                    <div class="producto-info">
+                        <h3>ASUS ROG Strix B550-F Gaming</h3>
+                        <p class="producto-desc">Placa madre AMD AM4 con PCIe 4.0 y WiFi 6</p>
+                        <div class="producto-especificaciones">
+                            <div class="especificacion">
+                                <span>Socket:</span>
+                                <span>AM4</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Chipset:</span>
+                                <span>AMD B550</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Formato:</span>
+                                <span>ATX</span>
+                            </div>
+                        </div>
+                        <div class="producto-precio">
+                            <span class="precio">$189.990</span>
+                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20la%20ASUS%20ROG%20Strix%20B550-F%20Gaming%20que%20vi%20en%20su%20catálogo" class="btn btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Almacenamiento 1 -->
+                <div class="producto-card" data-categoria="almacenamiento">
+                    <div class="producto-badge">Oferta</div>
+                    <div class="producto-img">
+                        <img src="https://images.unsplash.com/photo-1597880110438-37bd507b5d7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Seagate Barracuda 2TB">
+                    </div>
+                    <div class="producto-info">
+                        <h3>Seagate Barracuda 2TB</h3>
+                        <p class="producto-desc">Disco duro para almacenamiento masivo</p>
+                        <div class="producto-especificaciones">
+                            <div class="especificacion">
+                                <span>Capacidad:</span>
+                                <span>2TB</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Velocidad:</span>
+                                <span>7200 RPM</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Interfaz:</span>
+                                <span>SATA 6Gb/s</span>
+                            </div>
+                        </div>
+                        <div class="producto-precio">
+                            <span class="precio">$54.990</span>
+                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Seagate%20Barracuda%202TB%20que%20vi%20en%20su%20catálogo" class="btn btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Refrigeración 1 -->
+                <div class="producto-card" data-categoria="refrigeracion">
+                    <div class="producto-img">
+                        <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Corsair H100i Elite Capellix">
+                    </div>
+                    <div class="producto-info">
+                        <h3>Corsair H100i Elite Capellix</h3>
+                        <p class="producto-desc">Sistema de refrigeración líquida AIO de 240mm</p>
+                        <div class="producto-especificaciones">
+                            <div class="especificacion">
+                                <span>Tamaño:</span>
+                                <span>240mm</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>RGB:</span>
+                                <span>Capellix LED</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Compatibilidad:</span>
+                                <span>Intel/AMD</span>
+                            </div>
+                        </div>
+                        <div class="producto-precio">
+                            <span class="precio">$149.990</span>
+                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Corsair%20H100i%20Elite%20Capellix%20que%20vi%20en%20su%20catálogo" class="btn btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Monitor 1 -->
+                <div class="producto-card" data-categoria="monitores">
+                    <div class="producto-badge">Nuevo</div>
+                    <div class="producto-img">
+                        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="ASUS TUF Gaming VG27AQ">
+                    </div>
+                    <div class="producto-info">
+                        <h3>ASUS TUF Gaming VG27AQ</h3>
+                        <p class="producto-desc">Monitor gaming 27" 1440p 165Hz IPS</p>
+                        <div class="producto-especificaciones">
+                            <div class="especificacion">
+                                <span>Tamaño:</span>
+                                <span>27"</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Resolución:</span>
+                                <span>2560x1440</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Frecuencia:</span>
+                                <span>165Hz</span>
+                            </div>
+                        </div>
+                        <div class="producto-precio">
+                            <span class="precio">$349.990</span>
+                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20ASUS%20TUF%20Gaming%20VG27AQ%20que%20vi%20en%20su%20catálogo" class="btn btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Teclado 1 -->
+                <div class="producto-card" data-categoria="perifericos">
+                    <div class="producto-img">
+                        <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Logitech G Pro X">
+                    </div>
+                    <div class="producto-info">
+                        <h3>Logitech G Pro X</h3>
+                        <p class="producto-desc">Teclado mecánico gaming con switches intercambiables</p>
+                        <div class="producto-especificaciones">
+                            <div class="especificacion">
+                                <span>Tipo:</span>
+                                <span>Mecánico</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Switches:</span>
+                                <span>Intercambiables</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Formato:</span>
+                                <span>Tenkeyless</span>
+                            </div>
+                        </div>
+                        <div class="producto-precio">
+                            <span class="precio">$119.990</span>
+                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Logitech%20G%20Pro%20X%20que%20vi%20en%20su%20catálogo" class="btn btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mouse 1 -->
+                <div class="producto-card" data-categoria="perifericos">
+                    <div class="producto-badge">Popular</div>
+                    <div class="producto-img">
+                        <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Razer DeathAdder V2">
+                    </div>
+                    <div class="producto-info">
+                        <h3>Razer DeathAdder V2</h3>
+                        <p class="producto-desc">Mouse gaming ergonómico con sensor óptico 20K DPI</p>
+                        <div class="producto-especificaciones">
+                            <div class="especificacion">
+                                <span>Sensor:</span>
+                                <span>Óptico Focus+ 20K DPI</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Botones:</span>
+                                <span>8 programables</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Peso:</span>
+                                <span>82g</span>
+                            </div>
+                        </div>
+                        <div class="producto-precio">
+                            <span class="precio">$49.990</span>
+                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Razer%20DeathAdder%20V2%20que%20vi%20en%20su%20catálogo" class="btn btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Audífonos 1 -->
+                <div class="producto-card" data-categoria="audio">
+                    <div class="producto-badge">Oferta</div>
+                    <div class="producto-img">
+                        <img src="https://images.unsplash.com/photo-1585298723689-81f7c74c0c9a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="HyperX Cloud II">
+                    </div>
+                    <div class="producto-info">
+                        <h3>HyperX Cloud II</h3>
+                        <p class="producto-desc">Audífonos gaming con sonido surround 7.1</p>
+                        <div class="producto-especificaciones">
+                            <div class="especificacion">
+                                <span>Sonido:</span>
+                                <span>Surround 7.1</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Drivers:</span>
+                                <span>53mm</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Micrófono:</span>
+                                <span>Desmontable</span>
+                            </div>
+                        </div>
+                        <div class="producto-precio">
+                            <span class="precio">$79.990</span>
+                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesan%20los%20HyperX%20Cloud%20II%20que%20vi%20en%20su%20catálogo" class="btn btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Router 1 -->
+                <div class="producto-card" data-categoria="redes">
+                    <div class="producto-img">
+                        <img src="https://images.unsplash.com/photo-1604403421133-72c8d980b7e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="ASUS RT-AX86U">
+                    </div>
+                    <div class="producto-info">
+                        <h3>ASUS RT-AX86U</h3>
+                        <p class="producto-desc">Router WiFi 6 gaming con puerto 2.5G</p>
+                        <div class="producto-especificaciones">
+                            <div class="especificacion">
+                                <span>WiFi:</span>
+                                <span>6 (802.11ax)</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Velocidad:</span>
+                                <span>5700 Mbps</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Puertos:</span>
+                                <span>Gigabit + 2.5G</span>
+                            </div>
+                        </div>
+                        <div class="producto-precio">
+                            <span class="precio">$199.990</span>
+                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20ASUS%20RT-AX86U%20que%20vi%20en%20su%20catálogo" class="btn btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fuente de Poder 1 -->
+                <div class="producto-card" data-categoria="redes">
+                    <div class="producto-badge">Nuevo</div>
+                    <div class="producto-img">
+                        <img src="https://images.unsplash.com/photo-1608396372738-61d8cd2c8a6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="EVGA SuperNOVA 1000 G5">
+                    </div>
+                    <div class="producto-info">
+                        <h3>EVGA SuperNOVA 1000 G5</h3>
+                        <p class="producto-desc">Fuente de poder 1000W 80 Plus Gold modular</p>
+                        <div class="producto-especificaciones">
+                            <div class="especificacion">
+                                <span>Potencia:</span>
+                                <span>1000W</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Certificación:</span>
+                                <span>80 Plus Gold</span>
+                            </div>
+                            <div class="especificacion">
+                                <span>Modular:</span>
+                                <span>Completo</span>
+                            </div>
+                        </div>
+                        <div class="producto-precio">
+                            <span class="precio">$179.990</span>
+                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20la%20EVGA%20SuperNOVA%201000%20G5%20que%20vi%20en%20su%20catálogo" class="btn btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ43RuU0ns3DYgTFBX7ZDtsvC2JJd5ntXCC1Bp9f-dpA0KGRW2x2D1KNPLfqvT_RuU8FIA" alt="Logo Andescomputacion">
+                    <h3>Andescomputacion</h3>
+                    <p>Tu solución tecnológica de confianza desde 0000.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://wa.me/56912345678" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="catalogo.html">Catálogo</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Yerbas Buenas 381, 2100000 Los Andes, Valparaíso</p>
+                    <p><i class="fas fa-phone"></i> +56 9 6193 8981</p>
+                    <p><i class="fas fa-envelope"></i> info@andescomputacion.cl</p>
+                    <p><i class="fas fa-clock"></i> Lun-Vie: 00:00-00
+                    <p><i class="fas fa-clock"></i> Lun-Vie: 10:00-19:00 | Sáb: 10:00-14:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Andescomputacion. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para el filtrado de categorías -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoriaBtns = document.querySelectorAll('.categoria-btn');
+            const productoCards = document.querySelectorAll('.producto-card');
+            
+            categoriaBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remover clase active de todos los botones
+                    categoriaBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Agregar clase active al botón clickeado
+                    this.classList.add('active');
+                    
+                    const categoria = this.getAttribute('data-categoria');
+                    
+                    // Mostrar/ocultar productos según la categoría seleccionada
+                    productoCards.forEach(card => {
+                        if (categoria === 'todos' || card.getAttribute('data-categoria') === categoria) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Efecto de aparición suave al cargar la página
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Aplicar efecto a las tarjetas de producto
+            productoCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
