@@ -1,0 +1,661 @@
+/* ===== HEADER Y NAVEGACIÓN ===== */
+.header {
+    background-color: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+    transition: all 0.3s ease;
+}
+
+.header.scrolled {
+    padding: 10px 0;
+    box-shadow: var(--shadow-heavy);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    text-decoration: none;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    filter: drop-shadow(0 0 5px var(--primary-color));
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+/* Navegación Principal */
+.nav-main ul {
+    display: flex;
+    list-style: none;
+    gap: var(--space-lg);
+    margin: 0;
+    padding: 0;
+}
+
+.nav-main a {
+    color: var(--white);
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-main a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-main a:hover::after,
+.nav-main a:focus::after,
+.nav-main a[aria-current="page"]::after {
+    width: 100%;
+}
+
+.nav-main a:hover,
+.nav-main a:focus {
+    color: var(--primary-color);
+}
+
+/* Menú Móvil */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    gap: 4px;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background: var(--white);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('andesportada.jpg') center/cover no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 120px 0 80px;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: var(--space-md);
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    animation: fadeInUp 0.8s ease;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    margin-bottom: var(--space-lg);
+    animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+/* ===== TARJETAS DE SERVICIOS ===== */
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+.servicio-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: var(--space-xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.servicio-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-primary);
+}
+
+.servicio-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-heavy);
+}
+
+.servicio-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-md);
+    font-size: 2rem;
+    color: var(--dark-bg);
+}
+
+.servicio-card h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--white);
+}
+
+.servicio-card p {
+    color: var(--text-light);
+    margin-bottom: var(--space-md);
+}
+
+/* ===== PRODUCTOS ===== */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-lg);
+}
+
+.producto-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.producto-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--gradient-primary);
+    color: var(--dark-bg);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 2;
+}
+
+.producto-img {
+    height: 200px;
+    background: var(--dark-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md);
+    border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.producto-img img {
+    max-width: 100%;
+    max-height: 160px;
+    transition: transform 0.3s ease;
+}
+
+.producto-card:hover .producto-img img {
+    transform: scale(1.05);
+}
+
+.producto-info {
+    padding: var(--space-md);
+}
+
+.producto-info h3 {
+    margin-bottom: var(--space-xs);
+    color: var(--white);
+}
+
+.producto-desc {
+    color: var(--text-light);
+    margin-bottom: var(--space-sm);
+    font-size: 0.9rem;
+}
+
+.producto-especificaciones {
+    margin-bottom: var(--space-sm);
+}
+
+.especificacion {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.producto-precio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-sm);
+}
+
+.precio {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* ===== FILTROS DE CATEGORÍAS ===== */
+.categorias-filtro {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+}
+
+.categoria-btn {
+    background: var(--card-bg);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.categoria-btn.active,
+.categoria-btn:hover {
+    background: var(--gradient-primary);
+    color: var(--dark-bg);
+}
+
+/* ===== FORMULARIOS ===== */
+.form-group {
+    margin-bottom: var(--space-md);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    color: var(--white);
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    background: var(--dark-bg);
+    border: 1px solid var(--text-muted);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    color: var(--white);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--section-dark);
+    color: var(--white);
+    padding: var(--space-xl) 0 var(--space-md);
+    border-top: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+.footer-logo img {
+    height: 50px;
+    margin-bottom: var(--space-sm);
+    filter: drop-shadow(0 0 5px var(--primary-color));
+}
+
+.footer-logo h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--space-sm);
+}
+
+.footer-links h4,
+.footer-contact h4 {
+    margin-bottom: var(--space-md);
+    position: relative;
+    padding-bottom: var(--space-xs);
+}
+
+.footer-links h4::after,
+.footer-contact h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--gradient-primary);
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: var(--space-xs);
+}
+
+.footer-links a {
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.footer-contact p {
+    margin-bottom: var(--space-xs);
+    color: var(--text-light);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-xs);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--dark-bg);
+    border-radius: 50%;
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--gradient-primary);
+    color: var(--dark-bg);
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--text-muted);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+/* ===== BOTÓN FLOTANTE WHATSAPP ===== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    animation: pulse-whatsapp 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float i {
+    font-size: 28px;
+}
+
+.whatsapp-float::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 2px solid #25D366;
+    border-radius: 50%;
+    opacity: 0;
+    animation: ripple 2s infinite;
+}
+
+@keyframes pulse-whatsapp {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Badge para mensajes no leídos */
+.whatsapp-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff4444;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* ===== FORMULARIOS WHATSAPP ===== */
+.whatsapp-form {
+    background: var(--card-bg);
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    border-left: 4px solid #25D366;
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.btn-whatsapp-full {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    flex: 1;
+    min-width: 200px;
+    justify-content: center;
+}
+
+.btn-whatsapp-full i {
+    font-size: 1.2rem;
+}
+
+/* ===== PRODUCTOS CON ACCIÓN DIRECTA WHATSAPP ===== */
+.producto-accion {
+    margin-top: var(--space-sm);
+}
+
+.btn-producto-whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+}
+
+/* ===== SECCIÓN CONTACTO WHATSAPP ===== */
+.contacto-directo {
+    background: var(--card-bg);
+    padding: var(--space-xl);
+    border-radius: var(--border-radius);
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.contacto-whatsapp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.contacto-whatsapp-item {
+    background: var(--dark-bg);
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.contacto-whatsapp-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.whatsapp-icon-large {
+    font-size: 3rem;
+    color: #25D366;
+    margin-bottom: var(--space-sm);
+}
+
+/* ===== CHAT SIMULADO ===== */
+.chat-preview {
+    background: var(--dark-bg);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    margin: var(--space-lg) 0;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.chat-message {
+    background: #e5e5e5;
+    color: #333;
+    padding: var(--space-sm);
+    border-radius: 18px;
+    margin-bottom: var(--space-sm);
+    max-width: 80%;
+    position: relative;
+}
+
+.chat-message:last-child {
+    background: #dcf8c6;
+    margin-left: auto;
+}
+
+.chat-message::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #e5e5e5;
+}
+
+.chat-message:last-child::before {
+    left: auto;
+    right: 10px;
+    border-top: 5px solid #dcf8c6;
+}

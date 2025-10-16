@@ -3,1151 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andescomputacion - Especialistas en Tecnología</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Variables de colores y estilos */
-        :root {
-            --verde: #00ff88;
-            --verde-oscuro: #00cc6a;
-            --negro: #0a0a0a;
-            --gris-oscuro: #1a1a1a;
-            --gris: #333333;
-            --gris-claro: #e0e0e0;
-            --blanco: #ffffff;
-            --azul-tecnico: #0066ff;
-        }
-        
-        /* Estilos generales */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--negro);
-            color: var(--blanco);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Efectos globales */
-        .tech-border {
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
-        }
-        
-        .glow-effect {
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-        }
-        
-        .section-title p {
-            color: var(--gris-claro);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .btn {
-            display: inline-block;
-            background: linear-gradient(to right, var(--verde), var(--verde-oscuro));
-            color: var(--negro);
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
-        }
-        
-        .btn-whatsapp {
-            background: linear-gradient(to right, #25D366, #128C7E);
-            color: white;
-        }
-        
-        .btn-whatsapp:hover {
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-        }
-        
-        /* Header */
-        header {
-            background-color: rgba(10, 10, 10, 0.9);
-            padding: 15px 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-        
-        .logo img {
-            height: 50px;
-            margin-right: 10px;
-            filter: drop-shadow(0 0 5px var(--verde));
-        }
-        
-        .logo h1 {
-            font-size: 1.8rem;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 800;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 25px;
-        }
-        
-        nav ul li a {
-            color: var(--blanco);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 5px 0;
-            position: relative;
-        }
-        
-        nav ul li a:hover {
-            color: var(--verde);
-        }
-        
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--verde);
-            transition: width 0.3s;
-        }
-        
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('andesportada.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 150px 0 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+    <title>Andescomputacion - Especialistas en Tecnología | Los Andes</title>
+    <meta name="description" content="Venta de componentes de computación, servicio técnico profesional e instalación de sistemas de seguridad en Los Andes. Tu solución tecnológica integral.">
+    <meta name="keywords" content="computación Los Andes, servicio técnico, componentes PC, reparación notebooks, cámaras seguridad, Andescomputacion">
+    <meta name="author" content="Andescomputacion">
     
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            color: var(--gris-claro);
-        }
-        
-        /* Servicios */
-        .servicios {
-            padding: 100px 0;
-            background-color: var(--gris-oscuro);
-        }
-        
-        .servicios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .servicio-card {
-            background-color: var(--negro);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s;
-            padding: 30px 20px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .servicio-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
-        }
-        
-        .servicio-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-        }
-        
-        .servicio-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: var(--negro);
-            font-size: 2rem;
-        }
-        
-        .servicio-card h3 {
-            margin-bottom: 15px;
-            color: var(--blanco);
-        }
-        
-        .servicio-card p {
-            color: var(--gris-claro);
-        }
-        
-        .servicio-link {
-            margin-top: 20px;
-        }
-        
-        /* Productos */
-        .productos {
-            padding: 100px 0;
-            background-color: var(--negro);
-        }
-        
-        .categorias {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-        
-        .categoria-btn {
-            background-color: var(--gris-oscuro);
-            color: var(--blanco);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .categoria-btn.active, .categoria-btn:hover {
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
-            color: var(--negro);
-        }
-        
-        .productos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .producto-card {
-            background-color: var(--gris-oscuro);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .producto-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
-        }
-        
-        .producto-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
-            color: var(--negro);
-            padding: 5px 10px;
-            border-radius: 3px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            z-index: 2;
-        }
-        
-        .producto-img {
-            height: 200px;
-            background-color: var(--negro);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
-        }
-        
-        .producto-img img {
-            max-width: 100%;
-            max-height: 160px;
-            transition: transform 0.3s;
-        }
-        
-        .producto-card:hover .producto-img img {
-            transform: scale(1.05);
-        }
-        
-        .producto-info {
-            padding: 20px;
-        }
-        
-        .producto-info h3 {
-            margin-bottom: 10px;
-            color: var(--blanco);
-        }
-        
-        .producto-desc {
-            color: var(--gris-claro);
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-        
-        .producto-especificaciones {
-            margin-bottom: 15px;
-        }
-        
-        .especificacion {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-            font-size: 0.8rem;
-            color: var(--gris-claro);
-        }
-        
-        .producto-precio {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-        }
-        
-        .precio {
-            font-weight: bold;
-            color: var(--verde);
-            font-size: 1.2rem;
-        }
-        
-        /* Sobre Nosotros */
-        .sobre-nosotros {
-            padding: 100px 0;
-            background-color: var(--gris-oscuro);
-        }
-        
-        .sobre-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-        
-        .sobre-text {
-            flex: 1;
-        }
-        
-        .sobre-text h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--blanco);
-        }
-        
-        .sobre-text p {
-            margin-bottom: 20px;
-            color: var(--gris-claro);
-        }
-        
-        .sobre-stats {
-            display: flex;
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .stat-text {
-            color: var(--gris-claro);
-            font-size: 0.9rem;
-        }
-        
-        .sobre-image {
-            flex: 1;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-        
-        .sobre-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Contacto */
-        .contacto {
-            padding: 100px 0;
-            background-color: var(--negro);
-        }
-        
-        .contacto-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        
-        .contacto-info {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        
-        .info-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--negro);
-            flex-shrink: 0;
-            font-size: 1.2rem;
-        }
-        
-        .info-text h3 {
-            margin-bottom: 5px;
-            color: var(--blanco);
-        }
-        
-        .info-text p {
-            color: var(--gris-claro);
-        }
-        
-        .contacto-form {
-            background-color: var(--gris-oscuro);
-            padding: 30px;
-            border-radius: 8px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--blanco);
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--negro);
-            border: 1px solid var(--gris);
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: all 0.3s;
-            color: var(--blanco);
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: var(--verde);
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
-        }
-        
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--gris-oscuro);
-            color: white;
-            padding: 50px 0 20px;
-            border-top: 1px solid rgba(0, 255, 136, 0.2);
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-logo img {
-            height: 50px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 5px var(--verde));
-        }
-        
-        .footer-logo h3 {
-            color: var(--verde);
-            margin-bottom: 15px;
-        }
-        
-        .footer-links h4,
-        .footer-contact h4 {
-            margin-bottom: 20px;
-            color: white;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-links h4::after,
-        .footer-contact h4::after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 2px;
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links ul li a {
-            color: #bbb;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links ul li a:hover {
-            color: var(--verde);
-        }
-        
-        .footer-contact p {
-            margin-bottom: 10px;
-            color: #bbb;
-            display: flex;
-            align-items: center;
-        }
-        
-        .footer-contact i {
-            margin-right: 10px;
-            color: var(--verde);
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--negro);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .social-icons a:hover {
-            background: linear-gradient(to right, var(--verde), var(--azul-tecnico));
-            color: var(--negro);
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #444;
-            color: #bbb;
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-            }
-            
-            nav ul {
-                margin-top: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                margin: 5px 10px;
-            }
-            
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            .sobre-content {
-                flex-direction: column;
-            }
-            
-            .sobre-stats {
-                flex-direction: column;
-                gap: 20px;
-            }
-        }
-    </style>
+    <!-- Preload crítico -->
+    <link rel="preload" href="css/main.css" as="style">
+    <link rel="preload" href="css/components.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/whatsapp.css">
+
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="logo andes computacion.png">
+    
+    <!-- Schema.org para negocio local -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ComputerStore",
+        "name": "Andescomputacion",
+        "description": "Especialistas en tecnología en Los Andes - Venta de componentes, servicio técnico profesional e instalación de sistemas de seguridad",
+        "url": "https://andescomputacion.cl",
+        "telephone": "+56-9-6193-8981",
+        "email": "info@andescomputacion.cl",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Yerbas Buenas 381",
+            "addressLocality": "Los Andes",
+            "addressRegion": "Valparaíso",
+            "postalCode": "2100000",
+            "addressCountry": "CL"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "-32.8366",
+            "longitude": "-70.5977"
+        },
+        "openingHours": [
+            "Mo-Fr 10:00-19:00",
+            "Sa 10:00-14:00"
+        ],
+        "priceRange": "$$",
+        "areaServed": "Los Andes y alrededores"
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip link para accesibilidad -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
     <!-- Header -->
-    <header>
+    <header id="main-header" class="header" role="banner">
         <div class="container header-container">
-            <a href="index.html" class="logo">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ43RuU0ns3DYgTFBX7ZDtsvC2JJd5ntXCC1Bp9f-dpA0KGRW2x2D1KNPLfqvT_RuU8FIA" alt="Logo Andescomputacion">
-                <h1>Andescomputacion</h1>
+            <a href="index.html" class="logo" aria-label="Andescomputacion - Página de inicio">
+                <img src="logo andes computacion.png" 
+                     alt="Logo Andescomputacion" 
+                     width="150" 
+                     height="50"
+                     loading="eager">
+                <h1 class="gradient-text">Andescomputacion</h1>
             </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="servicios.html">Servicios</a></li>
-                    <li><a href="productos.html">Productos</a></li>
-                    <li><a href="nosotros.html">Nosotros</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
+            
+            <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Menú principal">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <nav id="main-nav" class="nav-main" aria-label="Navegación principal">
+                <ul role="menubar">
+                    <li role="none"><a href="index.html" role="menuitem" aria-current="page">Inicio</a></li>
+                    <li role="none"><a href="servicios.html" role="menuitem">Servicios</a></li>
+                    <li role="none"><a href="productos.html" role="menuitem">Productos</a></li>
+                    <li role="none"><a href="nosotros.html" role="menuitem">Nosotros</a></li>
+                    <li role="none"><a href="contacto.html" role="menuitem">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="container hero-content">
-            <h2>Especialistas en Tecnología</h2>
-            <p>Venta de componentes, servicio técnico profesional e instalación de sistemas de seguridad. Tu solución tecnológica integral.</p>
-            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesan%20sus%20servicios%20de%20Andescomputacion" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
-            </a>
-        </div>
-    </section>
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 id="hero-title">Especialistas en Tecnología en Los Andes</h1>
+                    <p class="hero-subtitle">Venta de componentes, servicio técnico profesional e instalación de sistemas de seguridad. Tu solución tecnológica integral.</p>
+                    <div class="hero-actions">
+                        <a href="#productos" class="btn btn-primary">Ver Productos</a>
+                        <a href="https://wa.me/56961938981" 
+                           class="btn btn-whatsapp"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Contactar por WhatsApp">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                            Consultar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Servicios -->
-    <section class="servicios" id="servicios">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestros Servicios</h2>
-                <p>Soluciones tecnológicas completas para particulares y empresas</p>
-            </div>
-            <div class="servicios-grid">
-                <div class="servicio-card">
-                    <div class="servicio-icon"><i class="fas fa-shopping-cart"></i></div>
-                    <h3>Venta de Componentes</h3>
-                    <p>Amplio stock de componentes de computación de primeras marcas y máxima calidad.</p>
-                    <div class="servicio-link">
-                        <a href="servicios.html#venta-componentes" class="btn">Ver más</a>
-                    </div>
-                </div>
-                <div class="servicio-card">
-                    <div class="servicio-icon"><i class="fas fa-tools"></i></div>
-                    <h3>Servicio Técnico</h3>
-                    <p>Diagnóstico, reparación y mantenimiento de equipos informáticos con garantía.</p>
-                    <div class="servicio-link">
-                        <a href="servicios.html#servicio-tecnico" class="btn">Ver más</a>
-                    </div>
-                </div>
-                <div class="servicio-card">
-                    <div class="servicio-icon"><i class="fas fa-laptop-medical"></i></div>
-                    <h3>Reparación de Notebooks</h3>
-                    <p>Especialistas en reparación de laptops de todas las marcas y modelos.</p>
-                    <div class="servicio-link">
-                        <a href="servicios.html#reparacion-notebooks" class="btn">Ver más</a>
-                    </div>
-                </div>
-                <div class="servicio-card">
-                    <div class="servicio-icon"><i class="fas fa-print"></i></div>
-                    <h3>Servicio de Impresoras</h3>
-                    <p>Mantenimiento, reparación y venta de insumos para impresoras.</p>
-                    <div class="servicio-link">
-                        <a href="impresoras.html" class="btn">Ver más</a>
-                    </div>
-                </div>
-                <div class="servicio-card">
-                    <div class="servicio-icon"><i class="fas fa-camera"></i></div>
-                    <h3>Instalación de Cámaras</h3>
-                    <p>Sistemas de seguridad con cámaras HD y tecnología de punta.</p>
-                    <div class="servicio-link">
-                        <a href="servicios.html#instalacion-camaras" class="btn">Ver más</a>
-                    </div>
-                </div>
-                <div class="servicio-card">
-                    <div class="servicio-icon"><i class="fas fa-network-wired"></i></div>
-                    <h3>Redes y Conectividad</h3>
-                    <p>Instalación y configuración de redes cableadas e inalámbricas.</p>
-                    <div class="servicio-link">
-                        <a href="servicios.html#redes-conectividad" class="btn">Ver más</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Productos -->
-    <section class="productos" id="productos">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestros Productos</h2>
-                <p>Componentes de computación de alta calidad para armado y actualización</p>
-            </div>
-            
-            <div class="categorias">
-                <button class="categoria-btn active" data-categoria="todos">Todos</button>
-                <button class="categoria-btn" data-categoria="fuentes">Fuentes de Poder</button>
-                <button class="categoria-btn" data-categoria="gabinetes">Gabinetes</button>
-                <button class="categoria-btn" data-categoria="ram">Memoria RAM</button>
-                <button class="categoria-btn" data-categoria="procesadores">Procesadores</button>
-                <button class="categoria-btn" data-categoria="almacenamiento">Almacenamiento</button>
-            </div>
-            
-            <div class="productos-grid">
-                <!-- Fuente de Poder 1 -->
-                <div class="producto-card" data-categoria="fuentes">
-                    <div class="producto-badge">Nuevo</div>
-                    <div class="producto-img">
-                        <img src="https://images.unsplash.com/photo-1608396372738-61d8cd2c8a6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fuente de Poder Corsair">
-                    </div>
-                    <div class="producto-info">
-                        <h3>Fuente Corsair RM850x</h3>
-                        <p class="producto-desc">Fuente modular 80 Plus Gold de 850W para gaming</p>
-                        <div class="producto-especificaciones">
-                            <div class="especificacion">
-                                <span>Potencia:</span>
-                                <span>850W</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Certificación:</span>
-                                <span>80 Plus Gold</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Modular:</span>
-                                <span>Sí</span>
-                            </div>
-                        </div>
-                        <div class="producto-precio">
-                            <span class="precio">$149.990</span>
-                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20la%20Fuente%20Corsair%20RM850x%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Consultar
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <!-- Servicios Section -->
+        <section class="section servicios" id="servicios" aria-labelledby="servicios-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="servicios-title" class="gradient-text">Nuestros Servicios</h2>
+                    <p>Soluciones tecnológicas completas para particulares y empresas en Los Andes</p>
+                </header>
                 
-                <!-- Gabinete 1 -->
-                <div class="producto-card" data-categoria="gabinetes">
-                    <div class="producto-badge">Popular</div>
-                    <div class="producto-img">
-                        <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Gabinete NZXT">
-                    </div>
-                    <div class="producto-info">
-                        <h3>Gabinete NZXT H510</h3>
-                        <p class="producto-desc">Gabinete mid-tower con panel lateral templado</p>
-                        <div class="producto-especificaciones">
-                            <div class="especificacion">
-                                <span>Factor:</span>
-                                <span>ATX Mid-Tower</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Ventanas:</span>
-                                <span>Panel Templado</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>RGB:</span>
-                                <span>Incluido</span>
-                            </div>
+                <div class="servicios-grid">
+                    <article class="servicio-card">
+                        <div class="servicio-icon" aria-hidden="true">
+                            <i class="fas fa-shopping-cart"></i>
                         </div>
-                        <div class="producto-precio">
-                            <span class="precio">$89.990</span>
-                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Gabinete%20NZXT%20H510%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Consultar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Memoria RAM 1 -->
-                <div class="producto-card" data-categoria="ram">
-                    <div class="producto-badge">Oferta</div>
-                    <div class="producto-img">
-                        <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Memoria RAM Corsair">
-                    </div>
-                    <div class="producto-info">
-                        <h3>RAM Corsair Vengeance 16GB</h3>
-                        <p class="producto-desc">Kit 2x8GB DDR4 3200MHz para gaming</p>
-                        <div class="producto-especificaciones">
-                            <div class="especificacion">
-                                <span>Capacidad:</span>
-                                <span>16GB (2x8GB)</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Velocidad:</span>
-                                <span>3200MHz</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Latencia:</span>
-                                <span>CL16</span>
-                            </div>
-                        </div>
-                        <div class="producto-precio">
-                            <span class="precio">$64.990</span>
-                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20la%20RAM%20Corsair%20Vengeance%2016GB%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Consultar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Procesador 1 -->
-                <div class="producto-card" data-categoria="procesadores">
-                    <div class="producto-img">
-                        <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Procesador AMD Ryzen">
-                    </div>
-                    <div class="producto-info">
-                        <h3>AMD Ryzen 7 5800X</h3>
-                        <p class="producto-desc">Procesador 8 núcleos 16 hilos para gaming</p>
-                        <div class="producto-especificaciones">
-                            <div class="especificacion">
-                                <span>Núcleos:</span>
-                                <span>8 / 16 hilos</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Frecuencia:</span>
-                                <span>Hasta 4.7GHz</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Socket:</span>
-                                <span>AM4</span>
-                            </div>
-                        </div>
-                        <div class="producto-precio">
-                            <span class="precio">$349.990</span>
-                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Procesador%20AMD%20Ryzen%207%205800X%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Consultar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Almacenamiento 1 -->
-                <div class="producto-card" data-categoria="almacenamiento">
-                    <div class="producto-badge">Nuevo</div>
-                    <div class="producto-img">
-                        <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="SSD Samsung">
-                    </div>
-                    <div class="producto-info">
-                        <h3>SSD Samsung 970 EVO Plus 1TB</h3>
-                        <p class="producto-desc">SSD NVMe M.2 de alta velocidad</p>
-                        <div class="producto-especificaciones">
-                            <div class="especificacion">
-                                <span>Capacidad:</span>
-                                <span>1TB</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Velocidad Lectura:</span>
-                                <span>3,500 MB/s</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Interfaz:</span>
-                                <span>NVMe M.2</span>
-                            </div>
-                        </div>
-                        <div class="producto-precio">
-                            <span class="precio">$119.990</span>
-                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20SSD%20Samsung%20970%20EVO%20Plus%201TB%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Consultar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Fuente de Poder 2 -->
-                <div class="producto-card" data-categoria="fuentes">
-                    <div class="producto-img">
-                        <img src="https://images.unsplash.com/photo-1608396372738-61d8cd2c8a6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fuente de Poder Seasonic">
-                    </div>
-                    <div class="producto-info">
-                        <h3>Fuente Seasonic Focus 750W</h3>
-                        <p class="producto-desc">Fuente 80 Plus Gold totalmente modular</p>
-                        <div class="producto-especificaciones">
-                            <div class="especificacion">
-                                <span>Potencia:</span>
-                                <span>750W</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Certificación:</span>
-                                <span>80 Plus Gold</span>
-                            </div>
-                            <div class="especificacion">
-                                <span>Modular:</span>
-                                <span>Completo</span>
-                            </div>
-                        </div>
-                        <div class="producto-precio">
-                            <span class="precio">$129.990</span>
-                            <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20la%20Fuente%20Seasonic%20Focus%20750W%20que%20vi%20en%20su%20página" class="btn btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Consultar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="productos.html" class="btn">Ver Todos los Productos</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre Nosotros -->
-    <section class="sobre-nosotros" id="nosotros">
-        <div class="container">
-            <div class="sobre-content">
-                <div class="sobre-text">
-                    <h2>Sobre Andescomputacion</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nisi tempora ducimus laborum excepturi minima est maiores velit porro eveniet tempore saepe, et nemo, tenetur nesciunt, vero suscipit sit iste?.</p>
-<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore fugit eveniet, laboriosam dignissimos earum reiciendis recusandae maxime quas tempore fuga nihil! Ipsam, doloremque. Excepturi delectus voluptatem hic molestias? Saepe, porro?
-
-</p>                    <p></p>
+                        <h3>Venta de Componentes</h3>
+                        <p>Amplio stock de componentes de computación de primeras marcas y máxima calidad.</p>
+                        <a href="servicios.html#venta-componentes" class="btn btn-primary">Ver más</a>
+                    </article>
                     
-                    <div class="sobre-stats">
-                        <div class="stat">
-                            <div class="stat-number">10+</div>
-                            <div class="stat-text">Años de Experiencia</div>
+                    <article class="servicio-card">
+                        <div class="servicio-icon" aria-hidden="true">
+                            <i class="fas fa-tools"></i>
                         </div>
-                        <div class="stat">
-                            <div class="stat-number">5,000+</div>
-                            <div class="stat-text">Clientes Satisfechos</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">98%</div>
-                            <div class="stat-text">Tasa de Satisfacción</div>
-                        </div>
-                    </div>
+                        <h3>Servicio Técnico</h3>
+                        <p>Diagnóstico, reparación y mantenimiento de equipos informáticos con garantía.</p>
+                        <a href="servicios.html#servicio-tecnico" class="btn btn-primary">Ver más</a>
+                    </article>
                     
-                    <div style="margin-top: 30px;">
-                        <a href="nosotros.html" class="btn">Conoce Más Sobre Nosotros</a>
-                    </div>
-                </div>
-                <div class="sobre-image">
-                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Equipo de Andescomputacion">
+                    <article class="servicio-card">
+                        <div class="servicio-icon" aria-hidden="true">
+                            <i class="fas fa-laptop-medical"></i>
+                        </div>
+                        <h3>Reparación de Notebooks</h3>
+                        <p>Especialistas en reparación de laptops de todas las marcas y modelos.</p>
+                        <a href="servicios.html#reparacion-notebooks" class="btn btn-primary">Ver más</a>
+                    </article>
+                    
+                    <article class="servicio-card">
+                        <div class="servicio-icon" aria-hidden="true">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <h3>Servicio de Impresoras</h3>
+                        <p>Mantenimiento, reparación y venta de insumos para impresoras.</p>
+                        <a href="impresoras.html" class="btn btn-primary">Ver más</a>
+                    </article>
+                    
+                    <article class="servicio-card">
+                        <div class="servicio-icon" aria-hidden="true">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>Instalación de Cámaras</h3>
+                        <p>Sistemas de seguridad con cámaras HD y tecnología de punta.</p>
+                        <a href="servicios.html#instalacion-camaras" class="btn btn-primary">Ver más</a>
+                    </article>
+                    
+                    <article class="servicio-card">
+                        <div class="servicio-icon" aria-hidden="true">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>Redes y Conectividad</h3>
+                        <p>Instalación y configuración de redes cableadas e inalámbricas.</p>
+                        <a href="servicios.html#redes-conectividad" class="btn btn-primary">Ver más</a>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contacto -->
-    <section class="contacto" id="contacto">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contáctanos</h2>
-                <p>Estamos aquí para resolver todas tus necesidades tecnológicas</p>
-            </div>
-            <div class="contacto-grid">
-                <div class="contacto-info">
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="info-text">
-                            <h3>Dirección</h3>
-                            <p>Av. Tecnológica 123, Centro</p>
+        <!-- Productos Destacados -->
+        <section class="section productos-destacados" id="productos" aria-labelledby="productos-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="productos-title" class="gradient-text">Productos Destacados</h2>
+                    <p>Componentes de computación de alta calidad para armado y actualización</p>
+                </header>
+                
+                <div class="categorias-filtro">
+                    <button class="categoria-btn active" data-categoria="todos" aria-pressed="true">Todos</button>
+                    <button class="categoria-btn" data-categoria="tarjetas-graficas" aria-pressed="false">Tarjetas Gráficas</button>
+                    <button class="categoria-btn" data-categoria="procesadores" aria-pressed="false">Procesadores</button>
+                    <button class="categoria-btn" data-categoria="almacenamiento" aria-pressed="false">Almacenamiento</button>
+                    <button class="categoria-btn" data-categoria="perifericos" aria-pressed="false">Periféricos</button>
+                </div>
+                
+                <div class="productos-grid">
+                    <!-- Productos se cargarán dinámicamente -->
+                    <article class="producto-card" data-categoria="tarjetas-graficas">
+                        <div class="producto-badge">Nuevo</div>
+                        <div class="producto-img">
+                            <img src="images/placeholder-product.jpg" data-src="images/products/rtx-4070.jpg" alt="NVIDIA GeForce RTX 4070" class="lazy" loading="lazy">
                         </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-phone"></i></div>
-                        <div class="info-text">
-                            <h3>Teléfono</h3>
-                            <p>+56 9 1234 5678</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
-                        <div class="info-text">
-                            <h3>Email</h3>
-                            <p>info@andescomputacion.cl</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-clock"></i></div>
-                        <div class="info-text">
-                            <h3>Horario de Atención</h3>
-                            <p>Lunes a Viernes: 9:00 - 19:00 hrs<br>Sábados: 10:00 - 14:00 hrs</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
-                        <div class="info-text">
-                            <h3>WhatsApp</h3>
-                            <p>
-                                <a href="https://wa.me/56961938981?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20sus%20servicios" class="btn btn-whatsapp" target="_blank" style="padding: 8px 15px; font-size: 0.9rem;">
-                                    <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+                        <div class="producto-info">
+                            <h3>NVIDIA GeForce RTX 4070</h3>
+                            <p class="producto-desc">Tarjeta gráfica de alto rendimiento para gaming 4K</p>
+                            <div class="producto-especificaciones">
+                                <div class="especificacion">
+                                    <span>Memoria:</span>
+                                    <span>12GB GDDR6X</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>Interfaz:</span>
+                                    <span>PCIe 4.0</span>
+                                </div>
+                            </div>
+                            <div class="producto-precio">
+                                <span class="precio">$699.990</span>
+                                <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20la%20NVIDIA%20GeForce%20RTX%204070" 
+                                   class="btn btn-whatsapp"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Consultar
                                 </a>
-                            </p>
+                            </div>
                         </div>
-                    </div>
+                    </article>
+                    
+                    <!-- Más productos... -->
                 </div>
-                <div class="contacto-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="nombre">Nombre</label>
-                            <input type="text" id="nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefono">Teléfono</label>
-                            <input type="tel" id="telefono">
-                        </div>
-                        <div class="form-group">
-                            <label for="servicio">Servicio de Interés</label>
-                            <select id="servicio">
-                                <option value="">Selecciona un servicio</option>
-                                <option value="venta-componentes">Venta de Componentes</option>
-                                <option value="servicio-tecnico">Servicio Técnico</option>
-                                <option value="reparacion-notebooks">Reparación de Notebooks</option>
-                                <option value="servicio-impresoras">Servicio de Impresoras</option>
-                                <option value="instalacion-camaras">Instalación de Cámaras</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="mensaje">Mensaje</label>
-                            <textarea id="mensaje" placeholder="Describe tu consulta o requerimiento..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Enviar Mensaje</button>
-                    </form>
+                
+                <div class="text-center" style="margin-top: var(--space-xl);">
+                    <a href="productos.html" class="btn btn-primary">Ver Todos los Productos</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!-- Sobre Nosotros -->
+        <section class="section sobre-nosotros" id="nosotros" aria-labelledby="nosotros-title">
+            <div class="container">
+                <div class="sobre-content">
+                    <div class="sobre-text">
+                        <h2 id="nosotros-title" class="gradient-text">Especialistas en Tecnología en el valle del Aconcagua</h2>
+                        <p>En Andescomputacion nos dedicamos a ofrecer soluciones tecnológicas integrales para particulares y empresas. Nuestra experiencia de más de 10 años en el mercado nos ha permitido consolidarnos como referentes en el sector de Los Andes.</p>
+                        <p>Nos especializamos en la venta de componentes de computación, servicio técnico profesional, reparación de notebooks e instalación de sistemas de seguridad. Trabajamos con productos de primera calidad y ofrecemos garantía en todos nuestros servicios.</p>
+                        
+                        <div class="sobre-stats">
+                            <div class="stat">
+                                <div class="stat-number">+10</div>
+                                <div class="stat-text">Años de Experiencia</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">+5.000</div>
+                                <div class="stat-text">Clientes Satisfechos</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">+10.000</div>
+                                <div class="stat-text">Productos Vendidos</div>
+                            </div>
+                        </div>
+                        
+                        <a href="nosotros.html" class="btn btn-primary" style="margin-top: var(--space-lg);">Conoce Más Sobre Nosotros</a>
+                    </div>
+                    <div class="sobre-image">
+                        <img src="images/placeholder-about.jpg" data-src="images/equipo-andescomputacion.jpg" alt="Equipo de Andescomputacion" class="lazy" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+       <!-- Contacto Directo WhatsApp -->
+<section class="section contacto-directo" aria-labelledby="contacto-directo-title">
+    <div class="container">
+        <header class="section-header">
+            <h2 id="contacto-directo-title" class="gradient-text">Contacto Directo por WhatsApp</h2>
+            <p>Comunícate directamente con nosotros para una respuesta inmediata</p>
+        </header>
+        
+        <div class="contacto-whatsapp-grid">
+            <div class="contacto-whatsapp-item">
+                <div class="whatsapp-icon-large">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>Ventas</h3>
+                <p>Consulta por productos y precios</p>
+                <a href="https://wa.me/56961938981?text=Hola,%20quisiera%20consultar%20por%20sus%20productos" 
+                   class="btn btn-whatsapp-full" 
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> Contactar Ventas
+                </a>
+            </div>
+            
+            <div class="contacto-whatsapp-item">
+                <div class="whatsapp-icon-large">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>Soporte Técnico</h3>
+                <p>Asistencia y reparaciones</p>
+                <a href="https://wa.me/56961938981?text=Hola,%20necesito%20soporte%20técnico" 
+                   class="btn btn-whatsapp-full" 
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> Soporte Técnico
+                </a>
+            </div>
+            
+            <div class="contacto-whatsapp-item">
+                <div class="whatsapp-icon-large">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>Cotizaciones</h3>
+                <p>Solicita tu cotización personalizada</p>
+                <a href="https://wa.me/56961938981?text=Hola,%20quisiera%20solicitar%20una%20cotización" 
+                   class="btn btn-whatsapp-full" 
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> Pedir Cotización
+                </a>
+            </div>
+        </div>
+        
+        <!-- Chat de ejemplo -->
+        <div class="chat-preview">
+            <div class="chat-message">
+                Hola, ¿tienen la NVIDIA RTX 4070 en stock?
+            </div>
+            <div class="chat-message">
+                ¡Hola! Sí, tenemos stock. Precio: $699.990 ¿Te interesa?
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Formulario de Contacto Actualizado -->
+<section class="section contacto" id="contacto" aria-labelledby="contacto-title">
+    <div class="container">
+        <header class="section-header">
+            <h2 id="contacto-title" class="gradient-text">Envíanos un Mensaje</h2>
+            <p>Completa el formulario y te contactaremos por WhatsApp</p>
+        </header>
+        
+        <div class="whatsapp-form">
+            <form id="form-contacto-whatsapp">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo *</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono">Teléfono *</label>
+                    <input type="tel" id="telefono" name="telefono" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="servicio">Servicio de Interés *</label>
+                    <select id="servicio" name="servicio" class="form-control" required>
+                        <option value="">Selecciona un servicio</option>
+                        <option value="venta-componentes">Venta de Componentes</option>
+                        <option value="servicio-tecnico">Servicio Técnico</option>
+                        <option value="reparacion-notebooks">Reparación de Notebooks</option>
+                        <option value="instalacion-camaras">Instalación de Cámaras</option>
+                        <option value="servicio-impresoras">Servicio de Impresoras</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensaje">Mensaje *</label>
+                    <textarea id="mensaje" name="mensaje" class="form-control" required 
+                              placeholder="Describe tu consulta o requerimiento..."></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-whatsapp-full">
+                        <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                    </button>
+                    <a href="https://wa.me/56961938981" 
+                       class="btn btn-primary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> Chat Directo
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
     <!-- Footer -->
-    <footer>
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ43RuU0ns3DYgTFBX7ZDtsvC2JJd5ntXCC1Bp9f-dpA0KGRW2x2D1KNPLfqvT_RuU8FIA" alt="Logo Andescomputacion">
+                    <img src="images/logo-andescomputacion.png" alt="Logo Andescomputacion" width="150" height="50">
                     <h3>Andescomputacion</h3>
-                    <p>Tu solución tecnológica de confianza desde 0000.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="https://wa.me/56912345678" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <p>Tu solución tecnológica integral. Especialistas en componentes, servicio técnico e instalación de sistemas de seguridad en Los Andes.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://wa.me/56961938981" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
+                
                 <div class="footer-links">
                     <h4>Enlaces Rápidos</h4>
                     <ul>
@@ -1158,46 +427,53 @@
                         <li><a href="contacto.html">Contacto</a></li>
                     </ul>
                 </div>
+                
+                <div class="footer-links">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="servicios.html#venta-componentes">Venta de Componentes</a></li>
+                        <li><a href="servicios.html#servicio-tecnico">Servicio Técnico</a></li>
+                        <li><a href="servicios.html#reparacion-notebooks">Reparación de Notebooks</a></li>
+                        <li><a href="servicios.html#instalacion-camaras">Instalación de Cámaras</a></li>
+                        <li><a href="impresoras.html">Servicio de Impresoras</a></li>
+                    </ul>
+                </div>
+                
                 <div class="footer-contact">
                     <h4>Contacto</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Yerbas Buenas 381, 2100000 Los Andes, Valparaíso</p>
-                    <p><i class="fas fa-phone"></i> +56 9 6193 8981</p>
-                    <p><i class="fas fa-envelope"></i> info@andescomputacion.cl</p>
-                    <p><i class="fas fa-clock"></i> Lun-Vie: 00:00-00:00 / Sáb:00:00-00:00</p>
+                    <p>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        Yerbas Buenas 381, 2100000 Los Andes, Valparaíso
+                    </p>
+                    <p>
+                        <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                        +56 9 6193 8981
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        info@andescomputacion.cl
+                    </p>
+                    <p>
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                        Lun-Vie: 10:00-19:00 | Sáb: 10:00-14:00
+                    </p>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2025 Andescomputacion. Todos los derechos reservados.</p>
+                <p>&copy; 2024 Andescomputacion. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Filtro de productos por categoría
-        document.addEventListener('DOMContentLoaded', function() {
-            const categoriaBtns = document.querySelectorAll('.categoria-btn');
-            const productoCards = document.querySelectorAll('.producto-card');
-            
-            categoriaBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Remover clase active de todos los botones
-                    categoriaBtns.forEach(b => b.classList.remove('active'));
-                    // Agregar clase active al botón clickeado
-                    this.classList.add('active');
-                    
-                    const categoria = this.getAttribute('data-categoria');
-                    
-                    // Mostrar/ocultar productos según categoría
-                    productoCards.forEach(card => {
-                        if (categoria === 'todos' || card.getAttribute('data-categoria') === categoria) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
-    </script>
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+    <script src="js/product-filter.js" defer></script>
+    <script src="js/whatsapp-integration.js" defer></script>
+    <a href="#" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-badge">1</span>
+</a>
+
 </body>
 </html>

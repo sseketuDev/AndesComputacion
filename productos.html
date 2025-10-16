@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos - Andescomputacion</title>
+    <meta name="description" content="Amplio catálogo de productos tecnológicos en Andescomputacion - Teclados, mouse, audio, cargadores y accesorios">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="logo andes computacion.png">
+
+    <style>
+        /* ===== VARIABLES Y CONFIGURACIÓN GLOBAL ===== */
+        :root {
+            /* Colores principales */
+            --primary-color: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary-color: #0066ff;
+            --cyan: #00ffff;
+            
+            /* Colores de fondo */
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --section-dark: #1a1a1a;
+            
+            /* Colores de texto */
+            --text-light: #e0e0e0;
+            --text-muted: #888888;
+            --white: #ffffff;
+            
+            /* Gradientes */
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-cyan: linear-gradient(135deg, var(--primary-color), var(--cyan));
+            
+            /* Espaciado */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            
+            /* Bordes y sombras */
+            --border-radius: 8px;
+            --shadow-light: 0 2px 10px rgba(0, 255, 136, 0.1);
+            --shadow-medium: 0 5px 20px rgba(0, 255, 136, 0.15);
+            --shadow-heavy: 0 10px 30px rgba(0, 255, 136, 0.2);
+        }
+
+        /* ===== RESET Y ESTILOS BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== LAYOUT Y CONTENEDORES ===== */
+        .container {
+            width: 100%;
+            padding: 0 var(--space-md);
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+
+        /* ===== TIPOGRAFÍA ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-sm);
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+        h4 { font-size: 1.25rem; }
+
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        /* ===== ENLACES Y BOTONES ===== */
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-xs);
+            padding: 12px 30px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--dark-bg);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: var(--white);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+        }
+
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1rem;
+        }
+
+        /* ===== SECCIONES ===== */
+        .section {
+            padding: var(--space-xl) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+
+        .text-center { text-align: center; }
+
+        /* ===== HEADER Y NAVEGACIÓN ===== */
+        .header {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 10px 0;
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        /* Navegación Principal */
+        .nav-main ul {
+            display: flex;
+            list-style: none;
+            gap: var(--space-lg);
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-main a {
+            color: var(--white);
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .nav-main a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-main a:hover::after,
+        .nav-main a:focus::after,
+        .nav-main a[aria-current="page"]::after {
+            width: 100%;
+        }
+
+        .nav-main a:hover,
+        .nav-main a:focus {
+            color: var(--primary-color);
+        }
+
+        /* Menú Móvil */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            gap: 4px;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* ===== PRODUCTOS ===== */
+        .productos-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: var(--space-md);
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: var(--space-lg);
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .categorias-navegacion {
+            background: var(--card-bg);
+            padding: var(--space-md) 0;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+        
+        .categorias-navegacion ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .categorias-navegacion a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .categorias-navegacion a:hover,
+        .categorias-navegacion a.active {
+            background: var(--gradient-primary);
+            color: var(--dark-bg);
+        }
+        
+        .productos-categoria {
+            padding: var(--space-xl) 0;
+        }
+        
+        .productos-categoria:not(:first-child) {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .categoria-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .categoria-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .categoria-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .producto-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .producto-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--gradient-primary);
+            color: var(--dark-bg);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .producto-img {
+            height: 200px;
+            background: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-md);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .producto-img img {
+            max-width: 100%;
+            max-height: 160px;
+            transition: transform 0.3s ease;
+        }
+
+        .producto-card:hover .producto-img img {
+            transform: scale(1.05);
+        }
+
+        .producto-info {
+            padding: var(--space-md);
+        }
+
+        .producto-info h3 {
+            margin-bottom: var(--space-xs);
+            color: var(--white);
+        }
+
+        .producto-desc {
+            color: var(--text-light);
+            margin-bottom: var(--space-sm);
+            font-size: 0.9rem;
+        }
+
+        .producto-especificaciones {
+            margin-bottom: var(--space-sm);
+        }
+
+        .especificacion {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .producto-precio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--space-sm);
+        }
+
+        .precio {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .producto-stock {
+            display: inline-block;
+            padding: 4px 8px;
+            background: var(--gradient-primary);
+            color: var(--dark-bg);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .producto-envio {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-top: var(--space-sm);
+        }
+        
+        .producto-acciones {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+        
+        .btn-producto {
+            flex: 1;
+            justify-content: center;
+            font-size: 0.9rem;
+            padding: 10px 15px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--section-dark);
+            color: var(--white);
+            padding: var(--space-xl) 0 var(--space-md);
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        .footer-logo h3 {
+            color: var(--primary-color);
+            margin-bottom: var(--space-sm);
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            margin-bottom: var(--space-md);
+            position: relative;
+            padding-bottom: var(--space-xs);
+        }
+
+        .footer-links h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gradient-primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: var(--space-xs);
+            color: var(--text-light);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-xs);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--dark-bg);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gradient-primary);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--text-muted);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== BOTÓN FLOTANTE WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float i {
+            font-size: 28px;
+        }
+
+        @keyframes pulse-whatsapp {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* ===== ANIMACIONES ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .nav-main {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--dark-bg);
+                border-top: 1px solid rgba(0, 255, 136, 0.2);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-main.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-main ul {
+                flex-direction: column;
+                gap: 0;
+                padding: var(--space-md);
+            }
+            
+            .nav-main li {
+                width: 100%;
+            }
+            
+            .nav-main a {
+                display: block;
+                padding: var(--space-sm);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-main a:last-child {
+                border-bottom: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-actions .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .categorias-navegacion ul {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+            
+            .producto-acciones {
+                flex-direction: column;
+            }
+            
+            .productos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+            
+            .whatsapp-float i {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 var(--space-sm);
+            }
+            
+            .section {
+                padding: var(--space-lg) 0;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+                min-height: auto;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .whatsapp-float {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .whatsapp-float i {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="main-header" class="header" role="banner">
+        <div class="container header-container">
+            <a href="index.html" class="logo" aria-label="Andescomputacion - Página de inicio">
+                <h1 class="gradient-text">Andescomputacion</h1>
+            </a>
+            
+            <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Menú principal">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <nav id="main-nav" class="nav-main" aria-label="Navegación principal">
+                <ul role="menubar">
+                    <li role="none"><a href="index.html" role="menuitem">Inicio</a></li>
+                    <li role="none"><a href="servicios.html" role="menuitem">Servicios</a></li>
+                    <li role="none"><a href="productos.html" role="menuitem" aria-current="page">Productos</a></li>
+                    <li role="none"><a href="nosotros.html" role="menuitem">Nosotros</a></li>
+                    <li role="none"><a href="contacto.html" role="menuitem">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="productos-hero" aria-labelledby="productos-hero-title">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 id="productos-hero-title">Catálogo de Productos</h1>
+                    <p class="hero-subtitle">Descubre nuestra amplia gama de productos tecnológicos con la mejor calidad y precios</p>
+                    <div class="hero-actions">
+                        <a href="#teclados" class="btn btn-primary">Explorar Productos</a>
+                        <a href="https://wa.me/56961938981" 
+                           class="btn btn-whatsapp"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Consultar productos por WhatsApp">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                            Consultar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navegación por Categorías -->
+        <nav class="categorias-navegacion" aria-label="Navegación por categorías de productos">
+            <div class="container">
+                <ul>
+                    <li><a href="#teclados" class="active">Teclados</a></li>
+                    <li><a href="#mouse">Mouse</a></li>
+                    <li><a href="#audio">Audio</a></li>
+                    <li><a href="#cargadores">Cargadores</a></li>
+                    <li><a href="#accesorios">Accesorios</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Sección Teclados -->
+        <section id="teclados" class="productos-categoria" aria-labelledby="teclados-title">
+            <div class="container">
+                <div class="categoria-header">
+                    <h2 id="teclados-title" class="gradient-text">Teclados</h2>
+                    <p>Encuentra el teclado perfecto para tus necesidades, desde gaming hasta oficina</p>
+                </div>
+                
+                <div class="productos-grid">
+                    <!-- Producto 1 -->
+                    <article class="producto-card" data-categoria="teclados">
+                        <div class="producto-badge">Nuevo</div>
+                        <div class="producto-img">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2942/2942993.png" alt="Teclado Gaming Mecánico RGB" loading="lazy">
+                        </div>
+                        <div class="producto-info">
+                            <span class="producto-stock">En stock</span>
+                            <h3>Teclado Gaming Mecánico RGB</h3>
+                            <p class="producto-desc">Teclado mecánico con retroiluminación RGB personalizable y switches azules.</p>
+                            <div class="producto-especificaciones">
+                                <div class="especificacion">
+                                    <span>Tipo:</span>
+                                    <span>Mecánico</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>Conectividad:</span>
+                                    <span>USB</span>
+                                </div>
+                            </div>
+                            <div class="producto-precio">
+                                <span class="precio">$54.900</span>
+                                <div class="producto-envio">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <span>Envío gratis</span>
+                                </div>
+                            </div>
+                            <div class="producto-acciones">
+                                <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Teclado%20Gaming%20Mecánico%20RGB" 
+                                   class="btn btn-whatsapp btn-producto"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
+                                <button class="btn btn-outline btn-producto favorito-btn">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Producto 2 -->
+                    <article class="producto-card" data-categoria="teclados">
+                        <div class="producto-img">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2942/2942993.png" alt="Kit Teclado y Mouse Inalámbrico" loading="lazy">
+                        </div>
+                        <div class="producto-info">
+                            <span class="producto-stock">En stock</span>
+                            <h3>Kit Teclado y Mouse Inalámbrico</h3>
+                            <p class="producto-desc">Combo teclado y mouse inalámbrico con receptor USB unificado.</p>
+                            <div class="producto-especificaciones">
+                                <div class="especificacion">
+                                    <span>Tipo:</span>
+                                    <span>Membrana</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>Conectividad:</span>
+                                    <span>Inalámbrico 2.4G</span>
+                                </div>
+                            </div>
+                            <div class="producto-precio">
+                                <span class="precio">$16.900</span>
+                                <div class="producto-envio">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <span>Envío gratis</span>
+                                </div>
+                            </div>
+                            <div class="producto-acciones">
+                                <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Kit%20Teclado%20y%20Mouse%20Inalámbrico" 
+                                   class="btn btn-whatsapp btn-producto"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
+                                <button class="btn btn-outline btn-producto favorito-btn">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Producto 3 -->
+                    <article class="producto-card" data-categoria="teclados">
+                        <div class="producto-badge">Oferta</div>
+                        <div class="producto-img">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2942/2942993.png" alt="Teclado + Mouse Cobre Antibacteriano" loading="lazy">
+                        </div>
+                        <div class="producto-info">
+                            <span class="producto-stock">En stock</span>
+                            <h3>Teclado + Mouse Cobre Antibacteriano</h3>
+                            <p class="producto-desc">Combo teclado y mouse con superficie de cobre antibacteriana.</p>
+                            <div class="producto-especificaciones">
+                                <div class="especificacion">
+                                    <span>Material:</span>
+                                    <span>Cobre antibacteriano</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>Conectividad:</span>
+                                    <span>USB</span>
+                                </div>
+                            </div>
+                            <div class="producto-precio">
+                                <span class="precio">$19.900</span>
+                                <div class="producto-envio">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <span>Envío gratis</span>
+                                </div>
+                            </div>
+                            <div class="producto-acciones">
+                                <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Teclado%20+%20Mouse%20Cobre%20Antibacteriano" 
+                                   class="btn btn-whatsapp btn-producto"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
+                                <button class="btn btn-outline btn-producto favorito-btn">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Mouse -->
+        <section id="mouse" class="productos-categoria" aria-labelledby="mouse-title">
+            <div class="container">
+                <div class="categoria-header">
+                    <h2 id="mouse-title" class="gradient-text">Mouse</h2>
+                    <p>Precisión y comodidad en cada movimiento con nuestra selección de mouse</p>
+                </div>
+                
+                <div class="productos-grid">
+                    <!-- Producto 1 -->
+                    <article class="producto-card" data-categoria="mouse">
+                        <div class="producto-badge">Popular</div>
+                        <div class="producto-img">
+                            <img src="https://cdn-icons-png.flaticon.com/512/892/892458.png" alt="Mouse Bluetooth" loading="lazy">
+                        </div>
+                        <div class="producto-info">
+                            <span class="producto-stock">En stock</span>
+                            <h3>Mouse Bluetooth</h3>
+                            <p class="producto-desc">Mouse inalámbrico con conexión Bluetooth para mayor compatibilidad.</p>
+                            <div class="producto-especificaciones">
+                                <div class="especificacion">
+                                    <span>Conectividad:</span>
+                                    <span>Bluetooth</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>DPI:</span>
+                                    <span>1600</span>
+                                </div>
+                            </div>
+                            <div class="producto-precio">
+                                <span class="precio">$9.900</span>
+                                <div class="producto-envio">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <span>Envío gratis</span>
+                                </div>
+                            </div>
+                            <div class="producto-acciones">
+                                <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Mouse%20Bluetooth" 
+                                   class="btn btn-whatsapp btn-producto"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
+                                <button class="btn btn-outline btn-producto favorito-btn">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Producto 2 -->
+                    <article class="producto-card" data-categoria="mouse">
+                        <div class="producto-img">
+                            <img src="https://cdn-icons-png.flaticon.com/512/892/892458.png" alt="Mouse Inalámbrico 2.4G" loading="lazy">
+                        </div>
+                        <div class="producto-info">
+                            <span class="producto-stock">En stock</span>
+                            <h3>Mouse Inalámbrico 2.4G</h3>
+                            <p class="producto-desc">Mouse inalámbrico con receptor USB 2.4GHz y diseño ergonómico.</p>
+                            <div class="producto-especificaciones">
+                                <div class="especificacion">
+                                    <span>Conectividad:</span>
+                                    <span>2.4GHz</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>DPI:</span>
+                                    <span>1200</span>
+                                </div>
+                            </div>
+                            <div class="producto-precio">
+                                <span class="precio">$6.900</span>
+                                <div class="producto-envio">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <span>Envío gratis</span>
+                                </div>
+                            </div>
+                            <div class="producto-acciones">
+                                <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Mouse%20Inalámbrico%202.4G" 
+                                   class="btn btn-whatsapp btn-producto"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
+                                <button class="btn btn-outline btn-producto favorito-btn">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Audio -->
+        <section id="audio" class="productos-categoria" aria-labelledby="audio-title">
+            <div class="container">
+                <div class="categoria-header">
+                    <h2 id="audio-title" class="gradient-text">Audio</h2>
+                    <p>Sumérgete en el sonido con nuestros audífonos y dispositivos de audio</p>
+                </div>
+                
+                <div class="productos-grid">
+                    <!-- Producto 1 -->
+                    <article class="producto-card" data-categoria="audio">
+                        <div class="producto-img">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2942/2942947.png" alt="Audífono Bluetooth Manos Libres" loading="lazy">
+                        </div>
+                        <div class="producto-info">
+                            <span class="producto-stock">En stock</span>
+                            <h3>Audífono Bluetooth Manos Libres</h3>
+                            <p class="producto-desc">Audífono inalámbrico con manos libres para llamadas y música.</p>
+                            <div class="producto-especificaciones">
+                                <div class="especificacion">
+                                    <span>Conectividad:</span>
+                                    <span>Bluetooth</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>Batería:</span>
+                                    <span>8 horas</span>
+                                </div>
+                            </div>
+                            <div class="producto-precio">
+                                <span class="precio">$9.900</span>
+                                <div class="producto-envio">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <span>Envío gratis</span>
+                                </div>
+                            </div>
+                            <div class="producto-acciones">
+                                <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Audífono%20Bluetooth%20Manos%20Libres" 
+                                   class="btn btn-whatsapp btn-producto"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
+                                <button class="btn btn-outline btn-producto favorito-btn">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Producto 2 -->
+                    <article class="producto-card" data-categoria="audio">
+                        <div class="producto-badge">Nuevo</div>
+                        <div class="producto-img">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2942/2942947.png" alt="Audífono Bluetooth Model V8 Negro" loading="lazy">
+                        </div>
+                        <div class="producto-info">
+                            <span class="producto-stock">En stock</span>
+                            <h3>Audífono Bluetooth Model V8 Negro</h3>
+                            <p class="producto-desc">Audífono Bluetooth con diseño moderno y sonido de alta calidad.</p>
+                            <div class="producto-especificaciones">
+                                <div class="especificacion">
+                                    <span>Conectividad:</span>
+                                    <span>Bluetooth 5.0</span>
+                                </div>
+                                <div class="especificacion">
+                                    <span>Batería:</span>
+                                    <span>12 horas</span>
+                                </div>
+                            </div>
+                            <div class="producto-precio">
+                                <span class="precio">$18.900</span>
+                                <div class="producto-envio">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <span>Envío gratis</span>
+                                </div>
+                            </div>
+                            <div class="producto-acciones">
+                                <a href="https://wa.me/56961938981?text=Hola,%20me%20interesa%20el%20Audífono%20Bluetooth%20Model%20V8%20Negro" 
+                                   class="btn btn-whatsapp btn-producto"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
+                                <button class="btn btn-outline btn-producto favorito-btn">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="section contacto-directo" aria-labelledby="cta-final-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="cta-final-title" class="gradient-text">¿No encuentras lo que buscas?</h2>
+                    <p>Contáctanos directamente y te ayudaremos a encontrar el producto perfecto para ti</p>
+                </header>
+                
+                <div class="text-center">
+                    <a href="https://wa.me/56961938981" 
+                       class="btn btn-whatsapp btn-large"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> Consultar Productos por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Andescomputacion</h3>
+                    <p>Tu solución tecnológica integral. Especialistas en componentes, servicio técnico e instalación de sistemas de seguridad en Los Andes.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://wa.me/56961938981" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        Yerbas Buenas 381, 2100000 Los Andes, Valparaíso
+                    </p>
+                    <p>
+                        <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                        +56 9 6193 8981
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        info@andescomputacion.cl
+                    </p>
+                    <p>
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                        Lun-Vie: 10:00-19:00 | Sáb: 10:00-14:00
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Andescomputacion. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón WhatsApp Flotante -->
+    <a href="https://wa.me/56961938981" class="whatsapp-float" aria-label="Contactar por WhatsApp" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Script para funcionalidades frontend
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menú móvil
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navMain = document.querySelector('.nav-main');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    navMain.classList.toggle('active');
+                });
+            }
+            
+            // Navegación suave entre categorías
+            document.querySelectorAll('.categorias-navegacion a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remover clase active de todos los enlaces
+                    document.querySelectorAll('.categorias-navegacion a').forEach(a => {
+                        a.classList.remove('active');
+                    });
+                    
+                    // Agregar clase active al enlace clickeado
+                    this.classList.add('active');
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 120,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Actualizar navegación al hacer scroll
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('.productos-categoria');
+                const navLinks = document.querySelectorAll('.categorias-navegacion a');
+                
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Header con scroll
+                const header = document.getElementById('main-header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Función para favoritos (solo frontend)
+            document.querySelectorAll('.favorito-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        this.style.color = 'var(--primary-color)';
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        this.style.color = '';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

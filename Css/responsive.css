@@ -1,0 +1,269 @@
+/* ===== RESPONSIVE DESIGN - MOBILE FIRST ===== */
+
+/* Tablets y dispositivos medianos */
+@media (max-width: 1023px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-actions .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .nav-main {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--dark-bg);
+        border-top: 1px solid rgba(0, 255, 136, 0.2);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-main.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-main ul {
+        flex-direction: column;
+        gap: 0;
+        padding: var(--space-md);
+    }
+    
+    .nav-main li {
+        width: 100%;
+    }
+    
+    .nav-main a {
+        display: block;
+        padding: var(--space-sm);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-main a:last-child {
+        border-bottom: none;
+    }
+    
+    .sobre-content {
+        flex-direction: column;
+        gap: var(--space-lg);
+    }
+    
+    .sobre-stats {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    
+    .contacto-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    
+    .proceso-steps {
+        flex-direction: column;
+        gap: var(--space-lg);
+    }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--space-sm);
+    }
+    
+    .section {
+        padding: var(--space-lg) 0;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .servicios-grid,
+    .productos-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+    
+    .categorias-filtro {
+        gap: var(--space-xs);
+    }
+    
+    .categoria-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+    
+    .producto-precio {
+        flex-direction: column;
+        gap: var(--space-sm);
+        align-items: flex-start;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    
+    .hero {
+        padding: 100px 0 60px;
+        min-height: auto;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 320px) {
+    html {
+        font-size: 13px;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+    
+    .servicio-card,
+    .producto-card {
+        padding: var(--space-md);
+    }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1200px) {
+    .servicios-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .productos-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Modo de alto contraste para accesibilidad */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #00ff00;
+        --secondary-color: #0000ff;
+        --dark-bg: #000000;
+        --card-bg: #111111;
+        --white: #ffffff;
+        --text-light: #ffffff;
+    }
+}
+
+/* Modo reducido de movimiento */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Orientación landscape en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 100px 0 40px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+        margin-bottom: var(--space-sm);
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: var(--space-md);
+    }
+}
+/* ===== RESPONSIVE PARA WHATSAPP ===== */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+    }
+    
+    .whatsapp-float i {
+        font-size: 24px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-whatsapp-full {
+        min-width: 100%;
+    }
+    
+    .contacto-whatsapp-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .chat-preview {
+        margin: var(--space-md) 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .whatsapp-float {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .whatsapp-float i {
+        font-size: 22px;
+    }
+}
+
+/* Modo landscape en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    .whatsapp-float {
+        bottom: 10px;
+        right: 10px;
+        width: 45px;
+        height: 45px;
+    }
+}
